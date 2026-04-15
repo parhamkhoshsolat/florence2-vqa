@@ -29,7 +29,6 @@ This project involves:
 3. **Web Application** development using Streamlit for real-time inference
 4. **Model Deployment** on Hugging Face Spaces
 
-![Project Architecture](https://example.com/your-architecture-image.png)
 
 ## 🔧 Technical Components
 
@@ -91,8 +90,8 @@ The fine-tuned model shows strong performance on the VQA task:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/florence2-vqa-project.git
-cd florence2-vqa-project
+git clone https://github.com/Alirezakhoshsolat/florence2-vqa.git
+cd florence2-vqa
 ```
 
 2. Create and activate a virtual environment:
