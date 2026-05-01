@@ -8,7 +8,7 @@ Fine-tuned Microsoft Florence-2 (771M parameters) on the Abstract Scenes subset 
 
 ## Live Demo
 
-[Florence-2 VQA on HuggingFace Spaces](https://huggingface.co/spaces/parhamaki/Florence-2_VQA)
+[Florence-2 VQA on HuggingFace Spaces](https://huggingface.co/spaces/parhamkhoshsolat/Florence-2_VQA)
 
 ## What it does
 
