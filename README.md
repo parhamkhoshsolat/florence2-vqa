@@ -49,7 +49,7 @@ florence2-vqa/
 ## Local Setup
 
 ```bash
-git clone https://github.com/Alirezakhoshsolat/florence2-vqa.git
+git clone https://github.com/parhamkhoshsolat/florence2-vqa.git
 cd florence2-vqa
 python -m venv venv
 source venv/bin/activate
