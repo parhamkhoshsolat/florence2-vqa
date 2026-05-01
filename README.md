@@ -14,7 +14,7 @@ Fine-tuned Microsoft Florence-2 (771M parameters) on the Abstract Scenes subset 
 
 The base Florence-2 model handles a broad set of vision-language tasks. This project narrows it: fine-tune specifically for open-ended visual question answering on cartoon-style abstract scenes, then wrap it in an interactive app.
 
-The dataset has 30,000+ image-question pairs covering object identification, counting, spatial relationships, and scene understanding.
+The dataset has 150K image-question pairs (60K train / 30K validation / 60K test) covering object identification, counting, spatial relationships, and scene understanding, drawn from VQA v2.0 abstract scenes.
 
 ## Training
 
