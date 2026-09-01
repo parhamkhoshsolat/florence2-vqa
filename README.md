@@ -4,7 +4,7 @@
 ![PyTorch](https://img.shields.io/badge/pytorch-2.0%2B-red)
 ![Model](https://img.shields.io/badge/model-Florence--2-blue)
 
-Fine-tuned Microsoft Florence-2 (771M parameters) on the Abstract Scenes subset of VQA v2.0. Upload an image, ask a question, get a contextual answer with a confidence score.
+Full fine-tune of Microsoft Florence-2-base-ft (230M parameters, every parameter trainable) on the Abstract Scenes subset of VQA v2.0. Upload an image, ask a question, get a contextual answer with a confidence score.
 
 ## Live Demo
 
@@ -14,7 +14,7 @@ Fine-tuned Microsoft Florence-2 (771M parameters) on the Abstract Scenes subset 
 
 The base Florence-2 model handles a broad set of vision-language tasks. This project narrows it: fine-tune specifically for open-ended visual question answering on cartoon-style abstract scenes, then wrap it in an interactive app.
 
-The dataset has 150K image-question pairs (60K train / 30K validation / 60K test) covering object identification, counting, spatial relationships, and scene understanding, drawn from VQA v2.0 abstract scenes.
+Trained on the 60K train split. The full set is 150K image-question pairs (60K train / 30K validation / 60K test), but the test split ships without answers so it is unusable for training covering object identification, counting, spatial relationships, and scene understanding, drawn from VQA v2.0 abstract scenes.
 
 ## Training
 
