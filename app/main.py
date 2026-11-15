@@ -6,10 +6,12 @@ Florence-2 Visual Question Answering (VQA) Web Application
 
 This application provides an interactive web interface for visual question answering
 using a fine-tuned Florence-2 model. Users can upload images, ask questions about them,
-and receive answers with confidence scores.
+and receive answers with a model score. The score is the exponential of the best
+beam's length-normalised log-probability; it is not a calibrated probability that
+the answer is correct.
 
 The model was fine-tuned on the VQA v2.0 dataset (Abstract Scenes).
-GitHub: https://visualqa.org/
+Dataset: https://visualqa.org/
 
 Author: Seyyedalireza Khosh solat
 Date: May 2025
@@ -37,7 +39,9 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Configuration constants
-MODEL_PATH = "../models/florence2_finetuned_model"
+# Resolved from this file's location, so it matches scripts/download_model.py
+# whatever the working directory is.
+MODEL_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "models", "florence2_finetuned_model")
 IMAGE_SIZE = (768, 768)
 SUPPORTED_FORMATS = ["jpg", "jpeg", "png"]
 VQA_TASK_PROMPT = "<VQA>"
@@ -125,7 +129,7 @@ def process_image_and_question(image, question, num_beams=3, max_new_tokens=1024
         # Decode and extract answer
         generated_text = processor.batch_decode(outputs.sequences, skip_special_tokens=True)[0]
         
-        # Calculate confidence score
+        # Beam score: exp of the length-normalised log-probability of the best beam (not a calibrated probability)
         confidence = torch.exp(outputs.sequences_scores).cpu().tolist()
         confidence_percentage = f"{confidence[0] * 100:.2f}%"
         
@@ -243,7 +247,7 @@ def main():
             min_value=1,
             max_value=10,
             value=3,
-            help="Controls the diversity of generated answers. Higher values increase accuracy but slow down processing."
+            help="Number of candidate answers kept during beam search. Higher values search more widely but slow down processing."
         )
         max_new_tokens = st.slider(
             "Max New Tokens",
@@ -258,8 +262,11 @@ def main():
         This app demonstrates Visual Question Answering using the Florence-2 model 
         fine-tuned on the [VQA v2.0](https://visualqa.org/) dataset.
         
-        - [GitHub Repository](https://github.com/yourusername/florence2-vqa-project)
-        - [Hugging Face Space](https://huggingface.co/spaces/parhamaki/data_mining_project)
+        - [GitHub Repository](https://github.com/parhamkhoshsolat/florence2-vqa)
+        - [Hugging Face Space](https://parhamkhoshsolat-florence-2-vqa.hf.space)
+
+        The score shown with each answer is the model's beam score, not a
+        calibrated probability that the answer is correct.
         """)
     
     # Main content area

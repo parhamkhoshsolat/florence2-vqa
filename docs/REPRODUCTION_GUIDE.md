@@ -55,19 +55,20 @@ Follow these steps to reproduce the fine-tuning process:
 
 ## Model Evaluation
 
-Evaluate the model using the validation set:
+The notebook measures only training and validation loss after each epoch. No accuracy, VQA score or other answer-level metric is implemented in this repo, and the test split has no answers. Note also that the answer labels are padded without masking (`-100`), so the loss includes pad tokens.
+
+An answer-level evaluation would need new code, for example:
 1. Load the fine-tuned model
 2. Run inference on validation images
-3. Compare answers with ground truth
-4. Calculate accuracy, precision, and recall
+3. Compare answers with the ground truth (exact match or the standard VQA accuracy)
 
 ## Deployment
 
 1. **Prepare the model for deployment**
    ```bash
    # Clone the repository
-   git clone https://github.com/yourusername/florence2-vqa-project.git
-   cd florence2-vqa-project
+   git clone https://github.com/parhamkhoshsolat/florence2-vqa.git
+   cd florence2-vqa
    
    # Install dependencies
    pip install -r requirements.txt
@@ -78,11 +79,7 @@ Evaluate the model using the validation set:
 
 2. **Run the Streamlit application**
    ```bash
-   # Run directly from the app directory
    streamlit run app/main.py
-   
-   # Or use the convenient wrapper script
-   streamlit run app.py
    ```
 
 3. **Deploy to Hugging Face Spaces**
