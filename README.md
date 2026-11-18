@@ -45,6 +45,8 @@ python scripts/download_model.py
 streamlit run app/main.py
 ```
 
+The training notebook was written for Google Colab with a GPU. It mounts Google Drive and expects the VQA v2.0 Abstract Scenes data there as a ZIP file; the paths under `/content/` need changing to run it anywhere else. The Streamlit app above does not need the notebook.
+
 ## Project layout
 
 ```
